@@ -8,12 +8,14 @@
     "lint": "jshint **.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf dist/*",
+    "shader_store": "onchange 'js/shaders/*.vert' 'js/shaders/*.frag' -v -- node scripts/process_shaders.js",
     "watch": "watchify js/app.js -o dist/js/app.js",
-    "start:dev": "npm run watch & nodemon --watch js --watch server -e js server/index.js"
+    "start:dev": "npm run watch & npm run shader_store & nodemon --watch js --watch server -e js server/index.js"
   },
   "author": "Juan Andres Andrango <juan@floored.com> (http://www.floored.com/)",
   "license": "ISC",
   "devDependencies": {
+    "async": "^1.5.0",
     "jshint": "^2.8.0",
     "nodemon": "^1.8.0",
     "watchify": "^3.5.0"
