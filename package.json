@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:dist": "node scripts/process_shaders.js & mkdirp dist/js & npm run clean & browserify js/apps/simple_point.js > dist/js/simple_point.js",
+    "build:dist": "node scripts/process_shaders.js && npm run clean && browserify js/apps/simple_point.js > dist/js/simple_point.js",
     "env": "env",
     "lint": "jshint **.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rm -rf dist/*",
+    "clean": "rm -rf dist && mkdirp dist/js",
     "shader_store": "onchange 'js/shaders/*.vert' 'js/shaders/*.frag' -v -- node scripts/process_shaders.js",
     "watch": "watchify js/apps/simple_point.js -o dist/js/simple_point.js",
     "start:dev": "npm run watch & npm run shader_store & nodemon --watch js --watch server -e js server/index.js"
