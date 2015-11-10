@@ -35,7 +35,7 @@ function buildGLProgram(gl, vertexShaderSource, fragmentShaderSource) {
   return program;
 }
 
-exports = {
+module.exports = {
   buildGLProgram: buildGLProgram,
   buildCanvas: buildCanvas
 };
