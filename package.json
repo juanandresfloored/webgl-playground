@@ -1,7 +1,7 @@
 {
   "name": "webgl-playground",
   "version": "1.0.0",
-  "description": "",
+  "description": "resources: http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/, http://webglfundamentals.org/webgl/lessons/webgl-shaders-and-glsl.html",
   "main": "index.js",
   "scripts": {
     "build:dist": "node scripts/process_shaders.js && npm run clean && browserify js/apps/simple_point.js > dist/js/simple_point.js",
@@ -9,9 +9,10 @@
     "lint": "jshint **.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf dist && mkdirp dist/js",
-    "shader_store": "onchange 'js/shaders/*.vert' 'js/shaders/*.frag' -v -- node scripts/process_shaders.js",
-    "watch": "watchify js/apps/simple_point.js -o dist/js/simple_point.js",
-    "start:dev": "npm run shader_store && npm run watch & nodemon --watch js --watch server -e js server/index.js"
+    "watch:shaders": "onchange 'js/shaders/*.vert' 'js/shaders/*.frag' -v -- node scripts/process_shaders.js",
+    "watch:app": "watchify js/apps/simple_triangle.js -v -o dist/js/simple_triangle.js",
+    "watch": "npm run watch:shaders & npm run watch:app",
+    "start:dev": "node scripts/process_shaders.js && npm run watch & nodemon --watch js --watch server -e js server/index.js"
   },
   "author": "Juan Andres Andrango <juan@floored.com> (http://www.floored.com/)",
   "license": "ISC",
