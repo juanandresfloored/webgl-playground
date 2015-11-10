@@ -11,7 +11,7 @@
     "clean": "rm -rf dist && mkdirp dist/js",
     "shader_store": "onchange 'js/shaders/*.vert' 'js/shaders/*.frag' -v -- node scripts/process_shaders.js",
     "watch": "watchify js/apps/simple_point.js -o dist/js/simple_point.js",
-    "start:dev": "npm run watch & npm run shader_store & nodemon --watch js --watch server -e js server/index.js"
+    "start:dev": "npm run shader_store && npm run watch & nodemon --watch js --watch server -e js server/index.js"
   },
   "author": "Juan Andres Andrango <juan@floored.com> (http://www.floored.com/)",
   "license": "ISC",
