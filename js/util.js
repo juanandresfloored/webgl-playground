@@ -35,7 +35,19 @@ function buildGLProgram(gl, vertexShaderSource, fragmentShaderSource) {
   return program;
 }
 
+function makeVecGui(gui, jsVec, size, label, opts, onChangeFn) {
+  if (!opts) opts = {};
+  var controller = gui.addFolder(label);
+  var min = typeof opts.min !== 'undefined' ? opts.min : -1;
+  var max = typeof opts.max !== 'undefined' ? opts.max : 1;
+  for (var i = 0; i < size; i++) {
+    controller.add(jsVec, i.toString(), min, max).onChange(onChangeFn);
+  }
+  if (opts.open) controller.open();
+}
+
 module.exports = {
   buildGLProgram: buildGLProgram,
-  buildCanvas: buildCanvas
+  buildCanvas: buildCanvas,
+  makeVecGui: makeVecGui
 };
