@@ -39,4 +39,4 @@ function updateColor(glContext, glColor, jsColor) {
   gl.drawArrays(gl.TRIANGLES,  0, 3); // 3 vec2s
 }
 
-updateColor();
+updateColor(gl, uColor, guiColor);
