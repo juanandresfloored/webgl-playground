@@ -1,1 +1,1 @@
-web: npm install && npm run build:dist && node server/index.js
+web: node server/index.js
