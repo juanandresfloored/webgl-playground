@@ -1,8 +1,7 @@
 if (process.env['_webgl-playground']) return;
 
 var config = {
-	'_webgl-playground': true,
-  'port': '3000'
+	'_webgl-playground': true
 };
 
 for (var prop in config) {

@@ -13,4 +13,4 @@ app.get('/', function(req, res) {
   res.render('index.ejs');
 });
 
-app.listen(process.env.port);
+app.listen(process.env.PORT || 3001);
