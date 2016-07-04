@@ -1,4 +1,4 @@
 Demo
 ====
 
-npm install && npm run build:dist && node server/index.js
+npm install && npm run build && node server/index.js
