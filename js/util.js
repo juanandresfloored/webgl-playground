@@ -35,6 +35,7 @@ function buildGLProgram(gl, vertexShaderSource, fragmentShaderSource) {
   return program;
 }
 
+// TODO Remove this
 function makeVecGui(gui, jsVec, size, label, opts, onChangeFn) {
   if (!opts) opts = {};
   var controller = gui.addFolder(label);
