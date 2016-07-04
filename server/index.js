@@ -9,8 +9,8 @@ app.set('view engine', 'ejs');
 // app.use('/static', express.static(__dirname + '/../public'));
 app.use('/js', express.static(__dirname + '/../dist/js'));
 
-app.get('/', function(req, res) {
-  res.render('index.ejs', {app_name: req.query.app_name ? req.query.app_name : 'simple_point'});
+app.get('/:app_name', function(req, res) {
+  res.render('index.ejs', {app_name: req.params.app_name ? req.params.app_name : 'simple_point'});
 });
 
 app.listen(process.env.PORT || 3001);
