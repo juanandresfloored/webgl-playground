@@ -6,28 +6,17 @@
 
 
   "scripts": {
-
-    "prebuild": "npm run clean && npm run process_shaders",
-
-    "build:simple_point": "browserify js/apps/simple_point.js -o dist/js/simple_point.js",
-    "watch:simple_point": "watchify js/apps/simple_point.js -vo dist/js/simple_point.js",
-
-    "build:simple_triangle": "browserify js/apps/simple_triangle.js -o dist/js/simple_triangle.js",
-    "watch:simple_triangle": "watchify js/apps/simple_triangle.js -vo dist/js/simple_triangle.js",
-
-    "build:simple_triangle2": "browserify js/apps/simple_triangle2.js -o dist/js/simple_triangle2.js",
-    "watch:simple_triangle2": "watchify js/apps/simple_triangle2.js -vo dist/js/simple_triangle2.js",
-
-    "build:dist": "npm run prebuild && npm run build:simple_point && npm run build:simple_triangle && npm run build:simple_triangle2",
-
-    "process_shaders" : "node scripts/process_shaders.js",
     "lint": "jshint **.js",
+
     "clean": "rm -rf dist && mkdirp dist/js",
+    "process_shaders" : "node scripts/process_shaders.js",
+    "prebuild": "npm run clean && npm run process_shaders",
+    "build": "scripts/build",
 
-    "watch:shaders": "onchange 'js/shaders/*.vert' 'js/shaders/*.frag' -v -- npm run process_shaders",
-    "watch": "npm run watch:shaders & npm run watch:simple_point & npm run watch:simple_triangle & npm run watch:simple_triangle2",
+    "watch:shaders": " onchange 'js/shaders/*.vert' 'js/shaders/*.frag' -v -- npm run process_shaders",
+    "watch": "npm run watch:shaders & scripts/watch",
 
-    "start:dev": "npm run prebuild && npm run watch & nodemon --watch js --watch server -e js server/index.js"
+    "start:dev": "npm run build && npm run watch & nodemon --watch js --watch server -e js server/index.js"
   },
   "author": "Juan Andres Andrango <juan@floored.com> (http://www.floored.com/)",
   "license": "ISC",

@@ -1,0 +1,12 @@
+#!/bin/bash
+FILES=js/apps/*
+APPS_DIST_PATH="dist/js"
+
+for filePath in $FILES
+do
+  filename=$(basename "$filePath")
+  distPath="${APPS_DIST_PATH}/${filename}"
+  watchify $filePath -vo $distPath &
+done
+
+wait
